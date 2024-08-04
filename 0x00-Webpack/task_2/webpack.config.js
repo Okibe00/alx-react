@@ -7,6 +7,7 @@ module.exports = {
 	output: {
 		filename: "bundle.js",
 		path: path.resolve(__dirname, "public"),
+		assetModuleFilename: 'assets/logo.jpg'
 	},
 	performance: {
     maxAssetSize: 1000000, // 1 MB
@@ -22,6 +23,41 @@ module.exports = {
 			{
         test: /\.(png|jpe?g|gif|svg|eot|ttf|woff|woff2)$/i,
 				type: 'asset/resource',
+      },
+			{
+        test: /\.(png|jpe?g|gif|svg)$/i,
+        use: [
+          'cache-loader',
+          {
+            loader: 'file-loader',
+            options: {
+              name: '[path][name].[ext]',
+            },
+          },
+          {
+            loader: 'image-webpack-loader',
+            options: {
+              disable: !isProduction, // Disable during development
+              mozjpeg: {
+                progressive: true,
+                quality: 65,
+              },
+              optipng: {
+                enabled: isProduction,
+              },
+              pngquant: {
+                quality: [0.65, 0.90],
+                speed: 4,
+              },
+              gifsicle: {
+                interlaced: false,
+              },
+              webp: {
+                quality: 75,
+              },
+            },
+          },
+        ],
       },
     ],
   },
