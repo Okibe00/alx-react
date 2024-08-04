@@ -27,23 +27,21 @@ module.exports = {
 			{
         test: /\.(png|jpe?g|gif|svg)$/i,
         use: [
-          'cache-loader',
           {
             loader: 'file-loader',
             options: {
-              name: '[path][name].[ext]',
+              name: 'cache.jpg',
             },
           },
           {
             loader: 'image-webpack-loader',
             options: {
-              disable: !isProduction, // Disable during development
               mozjpeg: {
                 progressive: true,
                 quality: 65,
               },
               optipng: {
-                enabled: isProduction,
+                // enabled: isProduction,
               },
               pngquant: {
                 quality: [0.65, 0.90],
