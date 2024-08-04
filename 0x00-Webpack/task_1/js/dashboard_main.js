@@ -9,7 +9,7 @@ $(document).ready(function() {
 	$( "body" ).append("<p id='count'></p>");
 	$( "body" ).append("<p>Copyright - Holberton School</p>");
 
-	$( "button" ).on("click", _.debounce(updateCounter, 150));
+	$( "button" ).on("click", _.debounce(updateCounter, 500));
 });
 
 function updateCounter() {
