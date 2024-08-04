@@ -7,7 +7,7 @@ module.exports = {
 	output: {
 		filename: 'bundle.js',
 		path: path.resolve(__dirname, "public"),
-		assetModuleFilename: 'assets/logo.jpg'
+		// asgitsetModuleFilename: 'assets/logo.jpg'
 	},
 	performance: {
     maxAssetSize: 1000000, // 1 MB
