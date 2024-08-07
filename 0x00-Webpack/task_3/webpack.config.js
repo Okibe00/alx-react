@@ -7,22 +7,22 @@ module.exports = {
 	mode: "development",
 	devServer: {
 		static: {
-			directory: path.resolve(__dirname, "public"),
+			directory: path.join(__dirname, 'public'),
 		},
 		compress: true,
 		port: 8564
 	},
 	entry: {
 			header: {
-				import: path.resolve(__dirname, "modules/header/header.js"),
+				import: path.join(__dirname, "modules/header/header.js"),
 				dependOn: "shared"
 			},
 			body: {
-				import: path.resolve(__dirname, "modules/body/body.js"),
+				import: path.join(__dirname, "modules/body/body.js"),
 				dependOn: "shared"
 			},
 			footer: {
-				import: path.resolve(__dirname, "modules/footer/footer.js"),
+				import: path.join(__dirname, "modules/footer/footer.js"),
 				dependOn: "shared"
 			},
 		shared: ["jquery", "lodash"],
@@ -35,9 +35,9 @@ module.exports = {
 		template: "./index.html"
 	}), new CleanWebpackPlugin()],
 	optimization: {
-		runtimeChunk: "single"
+		runtimeChunk: "all"
 	},
-	devtool: "source-map",
+	devtool: "inine-source-map",
 	performance: {
     maxAssetSize: 1000000, // 1 MB
     maxEntrypointSize: 1000000, // 1 MB
