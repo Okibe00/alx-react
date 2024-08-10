@@ -1,0 +1,12 @@
+.notify {
+	border:  1px solid #333;
+	padding: 5px;
+}
+
+[value="urgent"] {
+	color: red;
+}
+
+[value="default"] {
+	color: darkblue;
+}
