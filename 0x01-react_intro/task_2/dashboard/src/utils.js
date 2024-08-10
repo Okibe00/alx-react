@@ -9,3 +9,15 @@ export const getFooterCopy = (isIndex) => {
 		return `Holberton School main dashboard`;
 	}
 }
+
+export const getLatestNotification = (flag) => {
+	const msg = '<strong>Urgent requirement</strong> - complete by EOD';
+	if (flag) {
+		return {
+			__html: msg
+		}
+	}
+	return msg;
+}
+
+

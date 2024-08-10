@@ -15,9 +15,9 @@ function App() {
 				<label htmlFor="email">
 					Email:
 				</label>
-				<input id='email' type="email" /><br />
+				<input id='email' type="email" />
 				<label htmlFor="password">Password</label>
-					<input id='password' type="password" /><br />
+					<input id='password' type="password" />
 					<button>Ok</button>
 			</div>
 
