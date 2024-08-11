@@ -1,5 +1,5 @@
 import { getFullYear, getFooterCopy, getLatestNotification } from './utils.js'
-
+import '@testing-library/react';
 
 	test("getFullYear()", () =>{
 		expect(getFullYear()).toBe(2024);
