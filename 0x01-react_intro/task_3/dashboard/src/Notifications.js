@@ -1,6 +1,6 @@
 import React from 'react';
 import './Notifications.css';
-// import { IoIosClose } from "react-icons/io";
+import { IoIosClose } from "react-icons/io";
 import { getLatestNotification } from './utils';
 
 export function Notifications() {
@@ -24,7 +24,7 @@ export function Notifications() {
 			onClick={console.log('Close button has been clicked')}
 			// style={button}
 			>
-			{/* <IoIosClose /> */}
+			<IoIosClose />
 			<img src="#" alt="close-image" />
 			</button>
 			</div>
