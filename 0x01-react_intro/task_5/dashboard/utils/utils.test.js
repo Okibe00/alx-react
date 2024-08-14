@@ -1,4 +1,4 @@
-import { getFullYear, getFooterCopy, getLatestNotification } from './utils.js'
+import { getFullYear, getFooterCopy, getLatestNotification } from './utils.js';
 import '@testing-library/react';
 
 	test("getFullYear()", () =>{
