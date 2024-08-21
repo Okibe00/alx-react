@@ -9,11 +9,17 @@ describe('test the login component', () => {
   });
 
   //test for input tags
-  test('test for presense of input tags', () => {
+  test('test for presense of email input', () => {
     const { container } = render(<Login />);
     const email = container.querySelector('#email');
     const passwd = container.querySelector('#password');
     expect(email).toBeInTheDocument();
+    expect(passwd).toBeInTheDocument();
+  })
+
+  test('test for presense of password', () => {
+    const { container } = render(<Login />);
+    const passwd = container.querySelector('#password');
     expect(passwd).toBeInTheDocument();
   })
 

@@ -2,6 +2,7 @@ import React from 'react';
 import './Notifications.css';
 import { IoIosClose } from "react-icons/io";
 import { getLatestNotification } from '../utils/utils.js';
+import NotificationItem from './NotificationItem.js';
 
 export function Notifications() {
 	const style = {
@@ -11,10 +12,6 @@ export function Notifications() {
 
 	}
 
-	// const button = {
-	// 	width: "100px",
-	// 	height: "auto"
-	// }
 	return (
 		<div className="notify">
 			<div style={style}>
@@ -29,15 +26,30 @@ export function Notifications() {
 			</button>
 			</div>
 			<ul>
-				<li>
+				{/* <li>
 					<data value="default">New course available</data>
-				</li>
-				<li>
+				</li> */}
+        <NotificationItem
+          value={"New course available"}
+          html={"<data value=default>New course available</data>"}
+          type={"default"}
+        />
+        <NotificationItem
+          value={"New resume available"}
+          type={""}
+        />
+
+				{/* <li>
 					<data value="">New resume available</data>
-				</li>
-				<li>
+          </li> */}
+          <NotificationItem
+            type={"urgent"}
+            html={`<data value=urgent id=urgent>${getLatestNotification(false)}</data>`}
+          />
+				{/* <li>
 					<data value="urgent" id="urgent" dangerouslySetInnerHTML={getLatestNotification(true)}></data>
-				</li>
+				</li> */}
+
 			</ul>
 		</div>
 	)
