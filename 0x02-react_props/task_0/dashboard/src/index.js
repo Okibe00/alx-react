@@ -8,7 +8,7 @@ const root = createRoot(dom);
 
 root.render(
   <div>
-    <Notifications />
+    {/* <Notifications /> */}
     <App />
-  </div>, root
+  </div>
 )

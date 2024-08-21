@@ -3,21 +3,6 @@ import React from 'react';
 import '@testing-library/jest-dom';
 import App from './App';
 
-/**
- * Very App renders without throwing
- */
-// test('renders learn react link', () => {
-//   render(<App />);
-//   const linkElement = screen.getByText('Login to access the full dashboard');
-//   expect(linkElement).toBeInTheDocument();
-// });
-
-/**
- * verify that App renders a div with the class App-header
- * verify that App renders a div with the class App-body
- * verify that App renders a div with the class App-footer
- */
-
 describe("test page element rendered", () => {
 	test("test for App-header", () => {
 		const { container } = render(<App />);
@@ -36,4 +21,20 @@ describe("test page element rendered", () => {
 		const element = container.querySelector('.App-footer');
 		expect(element).toBeInTheDocument();
 	});
+	test("test for notification", () => {
+		const { container } = render(<App />);
+    // screen.debug();
+		const element = container.querySelector('.notify');
+		expect(element).toBeInTheDocument();
+	});
 })
+
+
+// describe('test for children component', () => {
+//   test("Footer component exist", () => {
+//     const { getByTestId } = render(<App />)
+//     screen.debug()
+//     const footerComponent = getByTestId('footer');
+//     expect(footerComponent).toBeInTheDocument();
+//   })
+// })

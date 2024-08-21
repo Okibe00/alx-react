@@ -1,8 +1,20 @@
 import React from 'react';
 import { screen, render } from '@testing-library/react';
+import '@testing-library/jest-dom';
+import Login from './Login.js';
 
-test('renders learn react link', () => {
-  render(<App />);
-  const linkElement = screen.getByText('Login to access the full dashboard');
-  expect(linkElement).toBeInTheDocument();
-});
+describe('test the login component', () => {
+  test('renders without crashing', () => {
+    render(<Login />);
+  });
+
+  //test for input tags
+  test('test for presense of input tags', () => {
+    const { container } = render(<Login />);
+    const email = container.querySelector('#email');
+    const passwd = container.querySelector('#password');
+    expect(email).toBeInTheDocument();
+    expect(passwd).toBeInTheDocument();
+  })
+
+})
