@@ -31,7 +31,7 @@ export function Notifications() {
 				</li> */}
         <NotificationItem
           value={"New course available"}
-          html={"<data value=default>New course available</data>"}
+          // html={"<data value=default>New course available</data>"}
           type={"default"}
         />
         <NotificationItem
@@ -44,7 +44,9 @@ export function Notifications() {
           </li> */}
           <NotificationItem
             type={"urgent"}
-            html={`<data value=urgent id=urgent>${getLatestNotification(false)}</data>`}
+            value={getLatestNotification(false)}
+            // html={`<data value=urgent id=urgent>${getLatestNotification(false)}</data>`}
+            // html={null}
           />
 				{/* <li>
 					<data value="urgent" id="urgent" dangerouslySetInnerHTML={getLatestNotification(true)}></data>

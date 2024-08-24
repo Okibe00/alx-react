@@ -3,10 +3,10 @@
 	padding: 5px;
 }
 
-[value="urgent"] {
+[data-notification-type="urgent"] {
 	color: red;
 }
 
-[value="default"] {
+[data-notification-type="default"] {
 	color: darkblue;
 }
