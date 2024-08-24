@@ -1,0 +1,44 @@
+.notif-container {
+  position: absolute;
+  right: 0px;
+}
+
+.notify {
+  display: flex;
+  flex-wrap: wrap;
+  align-items: center;
+  justify-content: space-between;
+	border:  1px dotted red;
+	padding: 5px;
+  width: 400px;
+  margin-top: 6px;
+}
+
+[data-notification-type="urgent"] {
+	color: red;
+}
+
+[data-notification-type="default"] {
+	color: darkblue;
+}
+
+button {
+  background-color: white;
+  border: none;
+}
+
+ul {
+   margin-top: 0;
+}
+
+.menueItem {
+  font-size: 20px;
+}
+
+.showDrawer {
+  display: block
+}
+
+.hideDrawer {
+  display: none;
+}
