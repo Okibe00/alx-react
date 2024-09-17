@@ -1,22 +1,39 @@
-import React from 'react';
-import CourseListRow from './CourseListRow.js';
-import './CourseList.css';
+import React from "react";
+import CourseListRow from "./CourseListRow.js";
+import "./CourseList.css";
+import { CourseShape } from "./CourseShape.js";
+import PropTypes from "prop-types";
 
-export default function CourseList() {
-    return (
-      <table>
-        <thead>
+export default function CourseList({ listCourses }) {
+  console.log(listCourses);
+  return (
+    <table>
+      <thead>
+        {listCourses.length === 0 ? (
           <CourseListRow
-            textFirstCell={'Available courses'}
+            textFirstCell={"No course available yet"}
             isHeader={true}
           />
+        ) : (
           <CourseListRow
-            textFirstCell={'Course name'}
-            textSecondCell={'Credit'}
+            textFirstCell={"Course name"}
+            textSecondCell={"Credit"}
             isHeader={true}
           />
-        </thead>
-        <tbody>
+        )}
+      </thead>
+      <tbody>
+        {listCourses.map((obj) => {
+          return (
+            <CourseListRow
+              key={obj.id}
+              textFirstCell={obj.name}
+              textSecondCell={obj.credit}
+              isHeader={false}
+            />
+          );
+        })}
+        {/*
           <CourseListRow
             textFirstCell={'ES6'}
             textSecondCell={'60'}
@@ -31,8 +48,16 @@ export default function CourseList() {
             textFirstCell={'React'}
             textSecondCell={'40'}
             isHeader={false}
-          />
-        </tbody>
-      </table>
-    )
+          />*/}
+      </tbody>
+    </table>
+  );
 }
+
+CourseList.propTypes = {
+  listCourses: PropTypes.arrayOf(CourseShape),
+};
+
+CourseList.defaultProps = {
+  listCourses: [],
+};
