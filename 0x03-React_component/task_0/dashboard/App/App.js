@@ -43,6 +43,19 @@ class App extends React.Component {
       value: getLatestNotification(false),
     },
   ];
+
+  handleLogOut = (e) => {
+    if (e.key === "h" && e.ctrlKey) {
+      alert("Logging you out");
+      this.props.logOut();
+    }
+  };
+  componentDidMount() {
+    document.addEventListener("keydown", this.handleLogOut);
+  }
+  componentWillUnmount() {
+    document.removeEventListener("keydown", this.handleLogOut);
+  }
   render() {
     return (
       <div className="App">
@@ -64,5 +77,9 @@ class App extends React.Component {
 
 App.propTypes = {
   Isloggedin: PropTypes.bool,
+  logOut: PropTypes.func,
+};
+App.defaultPropTypes = {
+  logOut: function () {},
 };
 export default App;
