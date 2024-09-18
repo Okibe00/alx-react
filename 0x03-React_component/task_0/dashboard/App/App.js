@@ -8,8 +8,7 @@ import PropTypes from "prop-types";
 import { getLatestNotification } from "../utils/utils.js";
 
 class App extends React.Component {
-
-  let listCourses = [
+  listCourses = [
     {
       id: 1,
       name: "ES6",
@@ -27,7 +26,7 @@ class App extends React.Component {
     },
   ];
 
-  let listNotifications = [
+  listNotifications = [
     {
       id: 1,
       value: "New course available",
@@ -49,10 +48,14 @@ class App extends React.Component {
       <div className="App">
         <Notifications
           displayDrawer={false}
-          listNotifications={listNotifications}
+          listNotifications={this.listNotifications}
         />
         <Header />
-        {Isloggedin ? <CourseList listCourses={listCourses} /> : <Login />}
+        {this.props.Isloggedin ? (
+          <CourseList listCourses={this.listCourses} />
+        ) : (
+          <Login />
+        )}
         <Footer />
       </div>
     );
