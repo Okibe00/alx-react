@@ -1,4 +1,4 @@
-import { render, screen } from "@testing-library/react";
+import { render, screen, fireEvent } from "@testing-library/react";
 import React from "react";
 import "@testing-library/jest-dom";
 import App from "./App";
@@ -49,5 +49,15 @@ describe("test page element rendered", () => {
     const rows = container.querySelectorAll("tr");
     expect(table).toBeInTheDocument();
     expect(rows.length).toBe(4);
+  });
+
+  test("logout function", () => {
+    const logOut = jest.fn();
+    global.alert = jest.fn();
+    render(<App Isloggedin={true} logOut={logOut} />);
+    screen.debug();
+    fireEvent.keyDown(document, { key: "h", ctrlKey: true });
+    expect(logOut).toHaveBeenCalledTimes(1);
+    expect(global.alert).toHaveBeenCalledWith("Logging you out");
   });
 });
