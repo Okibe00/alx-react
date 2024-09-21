@@ -16,11 +16,6 @@ describe("test notificationItem", () => {
 
   test("markAsRead is called with right id", () => {
     const na = [{ id: 1, type: "default", value: "New course available" }];
-    //type,
-    //value,
-    //html,
-    //markAsRead,
-    //key_id,
     const mockFn = jest.fn((id) =>
       console.log(`Notification ${id} has been marked as read`)
     );
@@ -41,5 +36,7 @@ describe("test notificationItem", () => {
     expect(consoleSpy).toHaveBeenCalledWith(
       "Notification 1 has been marked as read"
     );
+    mockFn.mockRestore();
+    consoleSpy.mockRestore();
   });
 });

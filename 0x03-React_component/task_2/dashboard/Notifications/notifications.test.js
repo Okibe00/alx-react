@@ -43,5 +43,6 @@ describe("renders when no props is given", () => {
     expect(spy).toHaveBeenCalled();
     expect(spy).toHaveBeenCalledTimes(1);
     expect(spy).toHaveBeenCalledWith("Notification 42 has been marked as read");
+    spy.mockRestore();
   });
 });
