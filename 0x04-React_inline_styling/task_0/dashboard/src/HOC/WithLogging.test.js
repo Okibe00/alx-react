@@ -4,8 +4,18 @@ import "@testing-library/jest-dom";
 import WithLogging from "./WithLogging";
 import Login from "../Login/Login";
 import { render } from "@testing-library/react";
+import { StyleSheetTestUtils } from "aphrodite";
 
 describe("test HOC component", () => {
+
+  beforeAll(() => {
+    StyleSheetTestUtils.suppressStyleInjection();
+  })
+
+  afterAll(() => {
+    StyleSheetTestUtils.clearBufferAndResumeStyleInjection();
+  })
+
   let consoleSpy = null;
 
   beforeEach(() => {

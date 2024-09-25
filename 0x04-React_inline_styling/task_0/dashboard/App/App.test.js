@@ -2,12 +2,21 @@ import { render, screen, fireEvent } from "@testing-library/react";
 import React from "react";
 import "@testing-library/jest-dom";
 import App from "./App";
+import { StyleSheetTestUtils } from "aphrodite";
 
 describe("test page element rendered", () => {
+
+  beforeAll(() => {
+    StyleSheetTestUtils.suppressStyleInjection();
+  })
+
+  afterAll(() => {
+    StyleSheetTestUtils.clearBufferAndResumeStyleInjection();
+  })
   test("test for App-header", () => {
-    const { container } = render(<App />);
-    const element = container.querySelector(".App-header");
-    expect(element).toBeInTheDocument();
+    const { getByText } = render(<App />);
+    const text = getByText('School dashboard')
+    expect(text).toBeInTheDocument();
   });
 
   test("test for App-body", () => {
@@ -22,9 +31,8 @@ describe("test page element rendered", () => {
     expect(element).toBeInTheDocument();
   });
   test("test for notification", () => {
-    const { container } = render(<App />);
-    // screen.debug();
-    const element = container.querySelector(".notify");
+    const { getByText } = render(<App />);
+    const element = getByText("Your notifications");
     expect(element).toBeInTheDocument();
   });
 
@@ -55,7 +63,6 @@ describe("test page element rendered", () => {
     const logOut = jest.fn();
     global.alert = jest.fn();
     render(<App Isloggedin={true} logOut={logOut} />);
-    screen.debug();
     fireEvent.keyDown(document, { key: "h", ctrlKey: true });
     expect(logOut).toHaveBeenCalledTimes(1);
     expect(global.alert).toHaveBeenCalledWith("Logging you out");

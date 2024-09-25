@@ -1,7 +1,7 @@
 import { render, screen, fireEvent } from "@testing-library/react";
 import React from "react";
 import { Notifications } from "./Notifications.js";
-
+import { StyleSheetTestUtils } from "aphrodite";
 const notifications = [
   {
     id: 1,
@@ -18,6 +18,13 @@ const notifications = [
 ];
 
 describe("renders when no props is given", () => {
+
+  beforeAll(() => {
+    StyleSheetTestUtils.suppressStyleInjection();
+  })
+  afterAll(() => {
+    StyleSheetTestUtils.clearBufferAndResumeStyleInjection();
+  })
   test("renders with an empty notification list", () => {
     render(<Notifications listNotifications={[]} />);
   });
@@ -25,7 +32,6 @@ describe("renders when no props is given", () => {
   test("render no notification with empty notification array", () => {
     render(<Notifications listNotifications={[]} displayDrawer={true} />);
     const element = screen.getByText("No new Notification for now");
-    screen.debug();
     expect(element).toBeTruthy();
   });
   test('render "Here is a list of notifications"', () => {

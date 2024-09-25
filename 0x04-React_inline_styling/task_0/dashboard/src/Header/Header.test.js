@@ -2,11 +2,17 @@ import { render, screen } from '@testing-library/react';
 import React from 'react';
 import '@testing-library/jest-dom';
 import Header from './Header'
-
+import  {StyleSheetTestUtils} from 'aphrodite'
 describe('test the header component', () => {
+
+  beforeAll(() => {
+    StyleSheetTestUtils.suppressStyleInjection()
+  })
+  afterAll(() => {
+    StyleSheetTestUtils.clearBufferAndResumeStyleInjection()
+  })
   test("Render without breaking", () => {
     render(<Header />);
-    // screen.debug();
   });
 
    //test for header tag

@@ -15,10 +15,10 @@ const style = StyleSheet.create({
     borderBottom: '3px solid #ddd'
   }
 })
-const backgroundTh = {
+const backgroundTr = {
   backgroundColor: '#f5f5f5ab',
 }
-const backgroundTr = {
+const backgroundTh = {
   backgroundColor: '#deb5b545',
 }
 

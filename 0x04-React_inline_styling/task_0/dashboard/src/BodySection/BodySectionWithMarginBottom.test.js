@@ -2,8 +2,19 @@ import { render } from "@testing-library/react";
 import React from "react";
 import "@testing-library/dom";
 import BodySectionWithMarginBottom from "./BodySectionWithMarginBottom";
+import { StyleSheetTestUtils } from "aphrodite";
+
 
 describe("Testing body components", () => {
+
+  beforeAll(() => {
+    StyleSheetTestUtils.suppressStyleInjection()
+  })
+
+  afterAll(() => {
+    StyleSheetTestUtils.clearBufferAndResumeStyleInjection()
+  })
+  
   test("BodySectionWithMarginBottom", () => {
     const { getByText } = render(
       <BodySectionWithMarginBottom title={"test title"}>

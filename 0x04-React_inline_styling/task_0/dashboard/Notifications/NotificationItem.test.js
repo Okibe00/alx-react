@@ -1,15 +1,21 @@
 import React from "react";
 import "@testing-library/jest-dom";
 import NotificationItem from "./NotificationItem.js";
-import { Notifications } from "./Notifications.js";
+// import { Notifications } from "./Notifications.js";
 import {
-  getAllByRole,
   render,
-  screen,
   fireEvent,
 } from "@testing-library/react";
-
+import { StyleSheetTestUtils } from "aphrodite";
 describe("test notificationItem", () => {
+  beforeAll(() => {
+    StyleSheetTestUtils.suppressStyleInjection()
+  })
+
+  afterAll(() => {
+    StyleSheetTestUtils.clearBufferAndResumeStyleInjection()
+  })
+
   test("render without crashing", () => {
     render(<NotificationItem />);
   });
