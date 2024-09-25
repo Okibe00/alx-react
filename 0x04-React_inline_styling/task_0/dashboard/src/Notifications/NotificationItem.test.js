@@ -22,9 +22,10 @@ describe("test notificationItem", () => {
 
   test("markAsRead is called with right id", () => {
     const na = [{ id: 1, type: "default", value: "New course available" }];
-    const mockFn = jest.fn((id) =>
-      console.log(`Notification ${id} has been marked as read`)
-    );
+    const mockFn =  jest.fn()
+    // jest.fn((id) => {}
+      // console.log(`Notification ${id} has been marked as read`)
+    // );
     const { container } = render(
       <NotificationItem
         type={na[0].type}
@@ -33,16 +34,16 @@ describe("test notificationItem", () => {
         markAsRead={mockFn}
       />
     );
-    const consoleSpy = jest.spyOn(console, "log");
+    // const consoleSpy = jest.spyOn(console, "log");
     const li = container.querySelector("li");
     fireEvent.click(li);
     expect(mockFn).toHaveBeenCalled();
     expect(mockFn).toHaveBeenCalledTimes(1);
     expect(mockFn).toHaveBeenCalledWith(1);
-    expect(consoleSpy).toHaveBeenCalledWith(
-      "Notification 1 has been marked as read"
-    );
+    // expect(consoleSpy).toHaveBeenCalledWith(
+    //   "Notification 1 has been marked as read"
+    // );
     mockFn.mockRestore();
-    consoleSpy.mockRestore();
+    // consoleSpy.mockRestore();
   });
 });

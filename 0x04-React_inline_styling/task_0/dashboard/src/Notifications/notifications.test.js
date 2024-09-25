@@ -44,6 +44,7 @@ describe("renders when no props is given", () => {
 
   test("markAsRead function", () => {
     const spy = jest.spyOn(console, "log");
+    spy.mockImplementation(() => {})
     const instance = new Notifications();
     instance.markAsRead(42);
     expect(spy).toHaveBeenCalled();
