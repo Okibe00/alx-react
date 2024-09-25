@@ -52,7 +52,7 @@ export class Notifications extends React.Component {
   render() {
     return (
       <div className={css(style.notifContainer)}>
-        <div className="menueItem">Your notifications</div>
+        <div>Your notifications</div>
         {this.props.displayDrawer && (
           <div className={css(style.notify)}>
             {this.props.displayDrawer && (

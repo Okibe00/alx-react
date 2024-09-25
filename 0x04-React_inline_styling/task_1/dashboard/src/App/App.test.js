@@ -21,7 +21,7 @@ describe("test page element rendered", () => {
 
   test("test for App-body", () => {
     const { container } = render(<App />);
-    const element = container.querySelector(".App-body");
+    const element = container.querySelector(".bodySection");
     expect(element).toBeInTheDocument();
   });
 

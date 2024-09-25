@@ -22,7 +22,7 @@ const style = StyleSheet.create({
 })
 export default function Login() {
   return (
-    <div className="App-body">
+    <div>
       <p>Login to access the full dashboard</p>
       <label htmlFor="email" className={css(style.label)}>Email:</label>
       <input id="email" type="email" className={css(style.input)}  />
