@@ -17,7 +17,7 @@ table: {
 },
 
 })
-export default function CourseList({ listCourses }) {
+export default function CourseList({ listCourses=[] }) {
   return (
     <table className={css(style.table)}>
       <thead>
@@ -54,6 +54,6 @@ CourseList.propTypes = {
   listCourses: PropTypes.arrayOf(CourseShape),
 };
 
-CourseList.defaultProps = {
-  listCourses: [],
-};
+// CourseList.defaultProps = {
+//   listCourses: [],
+// };
