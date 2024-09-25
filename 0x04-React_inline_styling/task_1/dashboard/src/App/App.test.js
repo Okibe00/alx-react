@@ -26,8 +26,8 @@ describe("test page element rendered", () => {
   });
 
   test("test for App-footer", () => {
-    const { container } = render(<App />);
-    const element = container.querySelector(".App-footer");
+    const { getByText } = render(<App />);
+    const element = getByText('Copyright 2024 - Holberton School');
     expect(element).toBeInTheDocument();
   });
   test("test for notification", () => {
