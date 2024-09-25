@@ -1,13 +1,13 @@
 import React from "react";
-import Header from "../src/Header/Header.js";
-import Footer from "../src/Footer/Footer.js";
-import Login from "../src/Login/Login.js";
+import Header from "../Header/Header.js";
+import Footer from "../Footer/Footer.js";
+import Login from "../Login/Login.js";
 import { Notifications } from "../Notifications/Notifications.js";
 import CourseList from "../CourseList/CourseList.js";
 import PropTypes from "prop-types";
 import { getLatestNotification } from "../utils/utils.js";
-import BodySectionWithMarginBottom from "../src/BodySection/BodySectionWithMarginBottom.js";
-import BodySection from "../src/BodySection/BodySection.js";
+import BodySectionWithMarginBottom from "../BodySection/BodySectionWithMarginBottom.js";
+import BodySection from "../BodySection/BodySection.js";
 
 class App extends React.Component {
   listCourses = [

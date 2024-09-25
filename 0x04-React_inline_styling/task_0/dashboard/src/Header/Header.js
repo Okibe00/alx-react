@@ -1,5 +1,5 @@
 import React from 'react';
-import logo from '../../assets/holberton.png';
+import logo from '../assets/holberton.png';
 import './Header.css';
 import { StyleSheet, css } from 'aphrodite';
 
@@ -20,7 +20,7 @@ const style = StyleSheet.create({
     fontWeight: '900',
     fontFamily: 'Verdana, Geneva, Tahoma, sans-serif'
   },
-  
+
   img: {
     width: '200px'
   }
