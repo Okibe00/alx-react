@@ -1,6 +1,5 @@
 import React from 'react';
 import logo from '../assets/holberton.png';
-import './Header.css';
 import { StyleSheet, css } from 'aphrodite';
 
 const primaryColor = 'rgb(216, 45, 45)';

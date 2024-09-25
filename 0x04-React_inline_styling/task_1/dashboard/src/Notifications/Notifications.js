@@ -1,5 +1,4 @@
 import React from "react";
-import "./Notifications.css";
 import { IoIosClose } from "react-icons/io";
 import { getLatestNotification } from "../utils/utils.js";
 import NotificationItem from "./NotificationItem.js";
