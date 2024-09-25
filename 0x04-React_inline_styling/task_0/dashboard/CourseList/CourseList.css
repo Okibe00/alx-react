@@ -1,4 +1,4 @@
-
+/*
 table {
   position: relative;
   top: 40px;
@@ -7,13 +7,13 @@ table {
   border-collapse: collapse;
   margin: auto;
   font-size: 25px;
-}
+} */
 
- [colspan="2"] {
+ /* [colspan="2"] {
   text-align: center;
-}
-th {
+} */
+/* th {
   text-align: left;
   border-top: 3px solid #ddd;
   border-bottom: 3px solid #ddd;
-}
+} */

@@ -5,6 +5,39 @@ import { getLatestNotification } from "../utils/utils.js";
 import NotificationItem from "./NotificationItem.js";
 import PropTypes from "prop-types";
 import { NotificationItemShape } from "./NotificationItemShape.js";
+import { StyleSheet, css } from "aphrodite";
+const style = StyleSheet.create({
+  notify:  {
+    display: 'flex',
+    flexWrap: 'wrap',
+    alignItems: 'center',
+    justifyContent: 'space-between',
+    border: '1px dotted red',
+    padding: '5px',
+    width: '400px',
+    marginTop: '6px'
+  },
+  button:  {
+    backgroundColor: 'white',
+    border: 'none'
+  },
+  ul:  {
+    marginTop: 0,
+  },
+  menueItem: {
+    fontSize: '20px'
+  },
+  showDrawer: {
+    display: 'block'
+  },
+  hideDrawer: {
+    display: 'none'
+  },
+  notifContainer:  {
+    position: 'absolute',
+    right: '0px'
+  }
+})
 
 export class Notifications extends React.Component {
   markAsRead = (id) =>
@@ -19,16 +52,17 @@ export class Notifications extends React.Component {
   }
   render() {
     return (
-      <div className="notif-container">
+      <div className={css(style.notifContainer)}>
         <div className="menueItem">Your notifications</div>
         {this.props.displayDrawer && (
-          <div className="notify">
+          <div className={css(style.notify)}>
             {this.props.displayDrawer && (
               <p>Here is the list of notifications</p>
             )}
             <button
               aria-label="Close"
               onClick={() => console.log("Close button has been clicked")}
+              className={css(style.button)}
             >
               <IoIosClose />
             </button>

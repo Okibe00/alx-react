@@ -3,11 +3,23 @@ import CourseListRow from "./CourseListRow.js";
 import "./CourseList.css";
 import { CourseShape } from "./CourseShape.js";
 import PropTypes from "prop-types";
+import { StyleSheet, css } from "aphrodite";
 
+const style = StyleSheet.create({
+table: {
+  position: 'relative',
+  top: '40px',
+  width: '95%',
+  border: '1px solid #ddd',
+  borderCollapse: 'collapse',
+  margin: 'auto',
+  fontSize: '25px'
+},
+
+})
 export default function CourseList({ listCourses }) {
-  console.log(listCourses);
   return (
-    <table>
+    <table className={css(style.table)}>
       <thead>
         {listCourses.length === 0 ? (
           <CourseListRow
@@ -33,22 +45,6 @@ export default function CourseList({ listCourses }) {
             />
           );
         })}
-        {/*
-          <CourseListRow
-            textFirstCell={'ES6'}
-            textSecondCell={'60'}
-            isHeader={false}
-          />
-          <CourseListRow
-            textFirstCell={'Webpack'}
-            textSecondCell={'20'}
-            isHeader={false}
-          />
-          <CourseListRow
-            textFirstCell={'React'}
-            textSecondCell={'40'}
-            isHeader={false}
-          />*/}
       </tbody>
     </table>
   );

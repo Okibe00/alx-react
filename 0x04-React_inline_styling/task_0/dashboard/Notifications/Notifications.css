@@ -1,9 +1,9 @@
-.notif-container {
+/* .notif-container {
   position: absolute;
   right: 0px;
-}
+} */
 
-.notify {
+/* .notify {
   display: flex;
   flex-wrap: wrap;
   align-items: center;
@@ -12,22 +12,22 @@
   padding: 5px;
   width: 400px;
   margin-top: 6px;
-}
+} */
 
-[data-notification-type="urgent"] {
+/* [data-notification-type="urgent"] {
   color: red;
-}
+} */
 
-[data-notification-type="default"] {
+/* [data-notification-type="default"] {
   color: darkblue;
-}
+} */
 
-button {
+/* button {
   background-color: white;
   border: none;
-}
+} */
 
-ul {
+/* ul {
   margin-top: 0;
 }
 
@@ -41,4 +41,4 @@ ul {
 
 .hideDrawer {
   display: none;
-}
+} */
