@@ -55,15 +55,11 @@ class App extends React.Component {
     this.handleHideDrawer = this.handleHideDrawer.bind(this);
   }
   handleDisplayDrawer() {
-    // dosomething
-    console.log("Showing drawer");
     this.setState({displayDrawer: true})
     console.log(this.state.displayDrawer)
   }
 
   handleHideDrawer() {
-    // dosomething
-    console.log("hiding drawer");
     this.setState({displayDrawer: false})
   }
 
