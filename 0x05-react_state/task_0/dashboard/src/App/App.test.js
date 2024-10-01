@@ -67,7 +67,7 @@ describe("test page element rendered", () => {
   });
 });
 
-describe("test state management functions", () => {
+describe("test handleDisplayDrawer and handleHideDrawer", () => {
   test('test default value of displayDrawer', () => {
     const instance = new App();
     const drawerValue = instance.state.displayDrawer;
