@@ -9,42 +9,63 @@ import { getLatestNotification } from "../utils/utils.js";
 import BodySectionWithMarginBottom from "../BodySection/BodySectionWithMarginBottom.js";
 import BodySection from "../BodySection/BodySection.js";
 
-class App extends React.Component {
-  listCourses = [
-    {
-      id: 1,
-      name: "ES6",
-      credit: 60,
-    },
-    {
-      id: 2,
-      name: "Webpack",
-      credit: 20,
-    },
-    {
-      id: 3,
-      name: "React",
-      credit: 40,
-    },
-  ];
 
-  listNotifications = [
-    {
-      id: 1,
-      value: "New course available",
-      type: "default",
-    },
-    {
-      id: 2,
-      value: "New resume available",
-      type: "",
-    },
-    {
-      id: 3,
-      type: "urgent",
-      value: getLatestNotification(false),
-    },
-  ];
+const listCourses = [
+  {
+    id: 1,
+    name: "ES6",
+    credit: 60,
+  },
+  {
+    id: 2,
+    name: "Webpack",
+    credit: 20,
+  },
+  {
+    id: 3,
+    name: "React",
+    credit: 40,
+  },
+];
+
+const listNotifications = [
+  {
+    id: 1,
+    value: "New course available",
+    type: "default",
+  },
+  {
+    id: 2,
+    value: "New resume available",
+    type: "",
+  },
+  {
+    id: 3,
+    type: "urgent",
+    value: getLatestNotification(false),
+  },
+];
+class App extends React.Component {
+  constructor(props) {
+    super(props);
+    this.state = {
+      displayDrawer: false
+    };
+    this.handleDisplayDrawer = this.handleDisplayDrawer.bind(this);
+    this.handleHideDrawer = this.handleHideDrawer.bind(this);
+  }
+  handleDisplayDrawer() {
+    // dosomething
+    console.log("Showing drawer");
+    this.setState({displayDrawer: true})
+    console.log(this.state.displayDrawer)
+  }
+
+  handleHideDrawer() {
+    // dosomething
+    console.log("hiding drawer");
+    this.setState({displayDrawer: false})
+  }
 
   handleLogOut = (e) => {
     if (e.key === "h" && e.ctrlKey) {
@@ -62,8 +83,10 @@ class App extends React.Component {
     return (
       <div className="App">
         <Notifications
-          displayDrawer={true}
-          listNotifications={this.listNotifications}
+          displayDrawer={this.state.displayDrawer}
+          handleDisplayDrawer={this.handleDisplayDrawer}
+          handleHideDrawer={this.handleHideDrawer}
+          listNotifications={listNotifications}
         />
         <Header />
         {this.props.Isloggedin ? (

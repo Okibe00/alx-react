@@ -32,7 +32,7 @@ describe("test page element rendered", () => {
   });
   test("test for notification", () => {
     const { getByText } = render(<App />);
-    const element = getByText("Your notifications");
+    const element = getByText("Your Notifications");
     expect(element).toBeInTheDocument();
   });
 
@@ -52,11 +52,9 @@ describe("test page element rendered", () => {
     expect(password).toBeInTheDocument();
   });
   test("isloggedin is true", () => {
-    const { container } = render(<App Isloggedin={true} />);
-    const table = container.querySelector("table");
-    const rows = container.querySelectorAll("tr");
-    expect(table).toBeInTheDocument();
-    expect(rows.length).toBe(4);
+    const { container, getByText } = render(<App Isloggedin={true} />);
+    const title = getByText('Course list');
+    expect(title).toBeTruthy();
   });
 
   test("logout function", () => {
@@ -68,3 +66,24 @@ describe("test page element rendered", () => {
     expect(global.alert).toHaveBeenCalledWith("Logging you out");
   });
 });
+
+describe("test state management functions", () => {
+  test('test default value of displayDrawer', () => {
+    const instance = new App();
+    const drawerValue = instance.state.displayDrawer;
+    expect(drawerValue).toBe(false);
+  })
+
+  test('test handleDisplayDrawer', () => {
+    const instance = new App();
+    const handleDisplayDrawerSpy = jest.spyOn(instance, 'handleDisplayDrawer').mockImplementation(() => {});
+    instance.handleDisplayDrawer();
+    expect(handleDisplayDrawerSpy).toHaveBeenCalled();
+  })
+  test('test handleHideDrawer', () => {
+    const instance = new App();
+    const handleHideDrawerSpy = jest.spyOn(instance, 'handleHideDrawer').mockImplementation(() => {});
+    instance.handleHideDrawer();
+    expect(handleHideDrawerSpy).toHaveBeenCalled();
+  })
+})

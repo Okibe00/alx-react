@@ -25,6 +25,7 @@ describe("renders when no props is given", () => {
   afterAll(() => {
     StyleSheetTestUtils.clearBufferAndResumeStyleInjection();
   })
+
   test("renders with an empty notification list", () => {
     render(<Notifications listNotifications={[]} />);
   });
@@ -53,3 +54,29 @@ describe("renders when no props is given", () => {
     spy.mockRestore();
   });
 });
+
+describe("test handleDisplay and hideHideDisplay on render", () => {
+  beforeAll(() => {
+    StyleSheetTestUtils.suppressStyleInjection();
+  })
+  afterAll(() => {
+    StyleSheetTestUtils.clearBufferAndResumeStyleInjection();
+  })
+
+  test('test handledisplay on click', () => {
+    const handleDisplayDrawer = jest.fn()
+    const {container, getByText} = render(<Notifications handleDisplayDrawer={handleDisplayDrawer} />);
+    const btn = getByText('Your Notifications');
+    fireEvent.click(btn);
+    expect(handleDisplayDrawer).toHaveBeenCalled()
+
+  })
+
+  test('test handleHideDisplayDrawer on click', () => {
+    const handleHideDrawer = jest.fn()
+    const {container} = render(<Notifications handleHideDrawer={handleHideDrawer} displayDrawer={true} />);
+    const btn = container.querySelector('#close-btn');
+    fireEvent.click(btn);
+    expect(handleHideDrawer).toHaveBeenCalled()
+  })
+})

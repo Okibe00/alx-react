@@ -5,6 +5,7 @@ import NotificationItem from "./NotificationItem.js";
 import PropTypes from "prop-types";
 import { NotificationItemShape } from "./NotificationItemShape.js";
 import { StyleSheet, css } from "aphrodite";
+
 const style = StyleSheet.create({
   notify:  {
     display: 'flex',
@@ -52,25 +53,25 @@ export class Notifications extends React.Component {
   markAsRead = (id) =>
     console.log(`Notification ${id} has been marked as read`);
   shouldComponentUpdate(nextProps, nextState, nextContext) {
-    if (
-      nextProps.listNotifications.length > this.props.listNotifications.length
-    ) {
-      return true;
-    }
-    return false;
+    return (
+        this.state === nextState
+        ||
+        nextProps.length === this.props.listNotifications.length
+      )
   }
   render() {
     return (
       <div className={css(style.notifContainer)}>
-        {!this.props.displayDrawer && <div>Your notifications</div>}
+        {!this.props.displayDrawer && <div onClick={this.props.handleDisplayDrawer}>Your Notifications</div>}
         {this.props.displayDrawer && (
           <div className={css(style.notify)}>
             {this.props.displayDrawer && (
               <p>Here is the list of notifications</p>
             )}
             <button
+              id='close-btn'
               aria-label="Close"
-              onClick={() => console.log("Close button has been clicked")}
+              onClick={this.props.handleHideDrawer}
               className={css(style.button)}
             >
               <IoIosClose />
@@ -106,9 +107,13 @@ export class Notifications extends React.Component {
 Notifications.propTypes = {
   displayDrawer: PropTypes.bool,
   listNotifications: PropTypes.arrayOf(NotificationItemShape),
+  handleDisplayDrawer: PropTypes.func,
+  handleHideDrawer: PropTypes.func
 };
 
 Notifications.defaultProps = {
   displayDrawer: false,
   listNotifications: [],
+  // handleDisplayDrawer: () => {},
+  // handleHideDrawer: () => {},
 };
