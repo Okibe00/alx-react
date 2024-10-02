@@ -3,6 +3,7 @@ import React from "react";
 import "@testing-library/jest-dom";
 import App from "./App";
 import { StyleSheetTestUtils } from "aphrodite";
+import { Notifications } from "../Notifications/Notifications";
 
 describe("test page element rendered", () => {
 
@@ -51,6 +52,7 @@ describe("test page element rendered", () => {
     expect(email).toBeInTheDocument();
     expect(password).toBeInTheDocument();
   });
+
   test("isloggedin is true", () => {
     const { container, getByText } = render(<App Isloggedin={true} />);
     const title = getByText('Course list');
@@ -67,23 +69,37 @@ describe("test page element rendered", () => {
   });
 });
 
-describe("test handleDisplayDrawer and handleHideDrawer", () => {
-  test('test default value of displayDrawer', () => {
-    const instance = new App();
-    const drawerValue = instance.state.displayDrawer;
-    expect(drawerValue).toBe(false);
+describe("test handleDisplay and hideHideDisplay on render", () => {
+  beforeAll(() => {
+    StyleSheetTestUtils.suppressStyleInjection();
+  })
+  afterAll(() => {
+    StyleSheetTestUtils.clearBufferAndResumeStyleInjection();
   })
 
-  test('test handleDisplayDrawer', () => {
-    const instance = new App();
-    const handleDisplayDrawerSpy = jest.spyOn(instance, 'handleDisplayDrawer').mockImplementation(() => {});
-    instance.handleDisplayDrawer();
-    expect(handleDisplayDrawerSpy).toHaveBeenCalled();
+  test('test handledisplay on click', () => {
+    const handleDisplayDrawer = jest.fn()
+    const {container, getByText} = render(
+      <Notifications
+        displayDrawer={false}
+        handleDisplayDrawer={handleDisplayDrawer}
+      />
+    )
+    const btn = getByText('Your Notifications');
+    fireEvent.click(btn);
+    expect(handleDisplayDrawer).toHaveBeenCalled();
   })
-  test('test handleHideDrawer', () => {
-    const instance = new App();
-    const handleHideDrawerSpy = jest.spyOn(instance, 'handleHideDrawer').mockImplementation(() => {});
-    instance.handleHideDrawer();
-    expect(handleHideDrawerSpy).toHaveBeenCalled();
+
+  test('test handleHideDrawer on click', () => {
+    const handleHideDrawer = jest.fn();
+    const {container} = render(
+      <Notifications
+        displayDrawer={true}
+        handleHideDrawer={handleHideDrawer}
+      />
+    )
+    const btn = container.querySelector('#close-btn');
+    fireEvent.click(btn);
+    expect(handleHideDrawer).toHaveBeenCalled();
   })
 })
