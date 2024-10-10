@@ -1,0 +1,52 @@
+module.exports = {
+  env: {
+    browser: true, // Set browser to true since React runs in the browser
+    es6: true,
+    jest: true,
+  },
+  extends: [
+    'airbnb-base', // Airbnb style guide
+    'plugin:react/recommended', // React-specific linting rules
+    'plugin:jest/all', // Jest for testing
+  ],
+  globals: {
+    Atomics: 'readonly',
+    SharedArrayBuffer: 'readonly',
+  },
+  parserOptions: {
+    ecmaVersion: 2018,
+    sourceType: 'module',
+    ecmaFeatures: {
+      jsx: true, // Enable parsing of JSX
+    },
+  },
+  plugins: [
+    'react',
+    'react-hooks',
+    'jest',
+  ],
+  rules: {
+    'no-console': 'off', // Disable no-console rule
+    'no-shadow': 'off',
+    'no-restricted-syntax': [
+      'error',
+      'LabeledStatement',
+      'WithStatement',
+    ],
+    'react/react-in-jsx-scope': 'off', // Disable the need to import React in React 17+
+    'react-hooks/rules-of-hooks': 'error', // Enforce rules of hooks
+    'react-hooks/exhaustive-deps': 'warn', // Warn about missing dependencies in useEffect
+  },
+  settings: {
+    react: {
+      version: 'detect', // Automatically detect React version
+    },
+  },
+  overrides: [
+    {
+      files: ['*.js'],
+      excludedFiles: 'babel.config.js',
+    },
+  ],
+};
+
