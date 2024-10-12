@@ -1,8 +1,22 @@
 /**
  * return the value of an object at a define path
  */
-import { Map } from "./node_modules/immutable/dist/immutable.js";
+const { Map } = require('immutable');
 
-export default function accessImmutableObject(object, array) {
-    return Map(object).getIn(array) || undefined;
+function accessImmutableObject(object, array) {
+  if (object && array) {
+    const isEmtyObj = Object.keys(object).length;
+    const isEmtyArr = array.length;
+    if (isEmtyArr && isEmtyObj) {
+      return Map(object).getIn(array);
+    }
+    if (isEmtyObj) {
+      return Map(object);
+    }
+  }
+  return undefined;
 }
+
+module.exports = {
+  accessImmutableObject,
+};
