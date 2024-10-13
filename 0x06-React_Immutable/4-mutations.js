@@ -1,6 +1,6 @@
 const { Map } = require('immutable');
 
-const MAP = Map({
+const map = Map({
   1: 'Liam',
   2: 'Noah',
   3: 'Elijah',
@@ -8,11 +8,11 @@ const MAP = Map({
   5: 'Jacob',
   6: 'Lucas',
 });
-const MAP2 = MAP.withMutations((MAP) => {
-  MAP.set('2', 'Benjamin').set('4', 'Oliver');
+const map2 = map.withMutations((map) => {
+  map.set(2, 'Benjamin').set(4, 'Oliver');
 });
 
 module.exports = {
-  MAP,
-  MAP2,
+  map,
+  map2,
 };
