@@ -1,7 +1,8 @@
-const { Map, List } = require('immutable');
+// const { Map, List } = require('immutable');
+import { Map, List } from 'immutable';
 
 function concatElements(page1, page2) {
-  return (List(page1).concat(page2));
+  return (List(page1).concat(List(page2)));
 }
 
 function mergeElements(page1, page2) {
@@ -18,7 +19,7 @@ function mergeElements(page1, page2) {
   if (!flag) {
     return Map(page2);
   }
-  return Map(page1).merge(page2);
+  return Map(page1).merge(Map(page2));
 }
 
 module.exports = {
