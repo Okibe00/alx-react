@@ -23,7 +23,7 @@ describe('Notifications handlers', () => {
         "Non diam phasellus vestibulum lorem sed risus ultricies. Tellus mauris a diam maecenas sed"
     }
   ]
-  const authorId = '5debd764a7c57c7839d722e9';
+  const authorId = '5debd764a7c57c7839d722e9';.0
   test('test getAllNotificationsByUsers', () => {
     const findAuthor = getAllNotificationsByUsers(authorId);
     expect(array).toEqual(expect.arrayContaining(findAuthor));
