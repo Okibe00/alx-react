@@ -3,7 +3,7 @@
  * @description - contains function for creating actions
  */
 import store from '../store/store';
-import { SELECT_COURSE, UNSELECT_COURSE } from './courseActionTypes';
+import { SELECT_COURSE, UNSELECT_COURSE, FETCH_COURSE_SUCCESS } from './courseActionTypes';
 
 /**
  * @description - creates a select course action
@@ -30,6 +30,7 @@ export const unselectCourse = (index) => {
     index
   }
 }
+
 
 export const boundSelectCourse = (index) => dispatch(selectCourse(index));
 
