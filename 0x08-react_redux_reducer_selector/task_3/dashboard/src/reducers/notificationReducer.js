@@ -6,7 +6,7 @@
 
 const initialState = {
   notitifications: [],
-  filter: 'DEFAIULT'
+  filter: 'DEFAULT'
 }
 
 /**
@@ -25,14 +25,13 @@ export const notificationReducer = (initialState, action) => {
       return newNotifications;
     case 'MARK_AS_READ':
       var newNotifications = {...initialState}
-      return newNotifications.notifications.map(notification => {
+        newNotifications.notifications.forEach(notification => {
         if (notification.id === action.index) {
           notification.isRead = true;
-          return notification;
-        } else {
-          return notification;
+          // return notification;
         }
       });
+      return newNotifications;
     case 'SET_TYPE_FILTER':
       var newNotifications = {...initialState};
       newNotifications.filter = action.filter;
