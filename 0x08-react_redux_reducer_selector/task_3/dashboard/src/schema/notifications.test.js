@@ -5,6 +5,7 @@
 
 import { getAllNotificationsByUsers } from "./notifications"
 import { normalizedData } from "./notifications";
+import { coursesNormalizer } from "./courses";
 
 describe('Notifications handlers', () => {
   const array = [
@@ -58,4 +59,37 @@ describe('normalizr test suite', () => {
       const authorId = '5debd7642e815cd350407777';
       expect(normalizedData.entities.notifications[authorId].id).toEqual(authorId);
   });
+
+  test('normalize courses', () => {
+    const data = [{
+      id: 1,
+      name: "ES6",
+      isSelected: false,
+      credit: 60
+    },
+    {
+      id: 2,
+      name: "Webpack",
+      isSelected: false,
+      credit: 20
+    },
+    {
+      id: 3,
+      name: "React",
+      isSelected: false,
+      credit: 40
+    }]
+    const expectedData = {
+      entities: {
+        courses: {
+          1: { id: 1, name: "ES6", isSelected: false, credit: 60 },
+          2: { id: 2, name: "Webpack", isSelected: false, credit: 20 },
+          3: { id: 3, name: "React", isSelected: false, credit: 40 },
+        }
+      },
+      result: [1, 2, 3]
+    };
+    const normalizedData = coursesNormalizer(data);
+    expect(normalizedData).toEqual(expectedData);
+  })
 })
