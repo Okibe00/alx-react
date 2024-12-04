@@ -35,3 +35,17 @@ export function getAllNotificationsByUsers(userId) {
   return findUser;
 }
 
+/**
+ * 
+ * @param {*} data 
+ * @returns 
+ */
+const notificationListSchema = new schema.Entity('notifications');
+// const filterSchema = new schema.Entity('filter');
+const notificationSchema = new schema.Object({
+  notifications: [notificationListSchema]
+})
+export function notificationNormalizer(data) {
+  return normalize(data, notificationSchema);
+}
+
