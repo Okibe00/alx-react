@@ -2,40 +2,39 @@
  * @module - notificationReducer
  * @description - updates the notifiation slice of state
  */
-
+import { Map, setIn } from "immutable"
+import { notificationNormalizer } from "../schema/notifications"
 
 const initialState = {
   notitifications: [],
-  filter: 'DEFAULT'
 }
-
 /**
- * 
- * @param {object} initialState - the state object
  * @param {object} action - hold the details of what changed 
  * @returns new state object 
  */
 export const notificationReducer = (initialState, action) => {
   switch(action.type) {
     case 'FETCH_NOTIFICATIONS_SUCCESS':
-      var newNotifications = {...initialState}
+      var newNotifications = {...initialState};
+      newNotifications.notifications.push(...action.data)
       newNotifications.notifications.forEach(notification => {
         notification.isRead = false;
-      })
-      return newNotifications;
+      });
+      const normalizedState = notificationNormalizer(newNotifications);
+      const mapState = Map(normalizedState);
+      return mapState;
     case 'MARK_AS_READ':
       var newNotifications = {...initialState}
-        newNotifications.notifications.forEach(notification => {
-        if (notification.id === action.index) {
-          notification.isRead = true;
-          // return notification;
-        }
-      });
-      return newNotifications;
+      newNotifications = notificationNormalizer(newNotifications);
+      newNotifications = Map(newNotifications);
+      return setIn(
+        newNotifications,
+        ['entities', 'notifications',`${action.index}`, 'isRead']
+        , true);
     case 'SET_TYPE_FILTER':
       var newNotifications = {...initialState};
-      newNotifications.filter = action.filter;
-      return newNotifications;   
+      newNotifications = Map(notificationNormalizer(newNotifications));
+      return setIn(newNotifications, ['result', 'filter'], action.filter);
     default:
       return initialState;
   }
