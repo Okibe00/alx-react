@@ -30,15 +30,16 @@ describe('Notification Reducer', () => {
         ]
       }
       const initialState = {
-        notifications: [],
-        filter: 'DEFAULT'
+        filter: 'DEFAULT',
+        notifications: []
       }
-    const state = notificationReducer(initialState, action);
-    // console.log(state);
-    state.notifications.forEach(notification => {
-      expect(notification.isRead).toBe(false);
+    let state = notificationReducer(initialState, action);
+    state = state.toJS();
+    state.result.notifications.forEach(key => {
+      const value = state.entities.notifications[key].isRead;
+      expect(value).toBe(false);
     })
-    expect(state.filter).toBe('DEFAULT');
+    expect(state.result.filter).toBe('DEFAULT');
   })
   test('MARK_AS_READ, should set isRead to true', () => {
     const  initialState = {
@@ -70,10 +71,12 @@ describe('Notification Reducer', () => {
       index: 1
     }
 
-    const state = notificationReducer(initialState, action);
-    state.notifications.forEach(notification => {
-      if (notification.id == action.index) {
-        expect(notification.isRead).toBe(true);
+    let state = notificationReducer(initialState, action);
+    state = state.toJS();
+    state.result.notifications.forEach(key => {
+      if (key == action.index) {
+        let value = state.entities.notifications[key].isRead;
+        expect(value).toBe(true);
       }
     })
   });
@@ -86,7 +89,8 @@ describe('Notification Reducer', () => {
       type: 'SET_TYPE_FILTER',
       filter: 'URGENT'
     }
-    const state = notificationReducer(initialState, action);
-    expect(state.filter).toBe(action.filter);
+    let state = notificationReducer(initialState, action);
+    state = state.toJS();
+    expect(state.result.filter).toBe(action.filter);
   })
 })
