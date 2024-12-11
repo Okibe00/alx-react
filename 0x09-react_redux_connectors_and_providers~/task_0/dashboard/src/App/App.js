@@ -9,7 +9,7 @@ import { getLatestNotification } from "../utils/utils.js";
 import BodySectionWithMarginBottom from "../BodySection/BodySectionWithMarginBottom.js";
 import BodySection from "../BodySection/BodySection.js";
 import UsrContext from "./AppContext.js";
-import { connect } from 'redux';
+import { connect } from 'react-redux';
 
 const listCourses = [
   {
@@ -145,9 +145,10 @@ App.propTypes = {
 App.defaultPropTypes = {
   // logOut: function () {},
 };
-function mapStateToProps(state) {
+export function mapStateToProps(state) {
+  
   return {
-    isLoggedIn: state.uiReducer.get('isUserLoggedIn') 
+    isLoggedIn: state
   }
 }
 export default connect(mapStateToProps)(App);
