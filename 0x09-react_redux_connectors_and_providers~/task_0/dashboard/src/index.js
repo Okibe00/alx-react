@@ -14,7 +14,7 @@ const rootReducer = combineReducers({
   // notificationReducer,
   // courseReducer,
 })
-const store = createStore(rootReducer);
+export const store = createStore(rootReducer);
 const logOut = () => {};
 root.render(
   <div>
